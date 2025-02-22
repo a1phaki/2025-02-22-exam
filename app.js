@@ -1,3 +1,6 @@
+
+import { useEffect } from "react";
+
 const categories = [
   "All",
   "men's clothing",
@@ -6,6 +9,21 @@ const categories = [
   "jewelery"
 ];
 function App() {
+
+  const getProducts = async()=>{
+
+    try {
+      const res = await axios.get('https://fakestoreapi.com/products');
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  useEffect(()=>{
+    getProducts();
+  },[])
 
   return (
     <div className="container mx-auto p-4">
